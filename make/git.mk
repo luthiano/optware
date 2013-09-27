@@ -22,12 +22,12 @@
 # "NSLU2 Linux" other developers will feel free to edit.
 #
 GIT_SITE=http://git-core.googlecode.com/files
-GIT_VERSION=1.7.10.4
-GIT_IPK_VERSION=1
+GIT_VERSION=1.8.4
+GIT_IPK_VERSION=2
 GIT_SOURCE=git-$(GIT_VERSION).tar.gz
 GIT_DIR=git-$(GIT_VERSION)
 GIT_UNZIP=zcat
-GIT_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
+GIT_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 GIT_DESCRIPTION=GIT is a "directory tree content manager" that can be used for distributed revision control.
 GIT_SECTION=net
 GIT_PRIORITY=optional

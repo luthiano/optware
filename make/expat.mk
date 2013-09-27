@@ -15,11 +15,11 @@
 # You should change all these variables to suit your package.
 #
 EXPAT_SITE=http://$(SOURCEFORGE_MIRROR)/sourceforge/expat
-EXPAT_VERSION=2.0.1
+EXPAT_VERSION=2.1.0
 EXPAT_SOURCE=expat-$(EXPAT_VERSION).tar.gz
 EXPAT_DIR=expat-$(EXPAT_VERSION)
 EXPAT_UNZIP=zcat
-EXPAT_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
+EXPAT_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 EXPAT_DESCRIPTION=XML Parser library
 EXPAT_SECTION=libraries
 EXPAT_PRIORITY=optional
@@ -29,7 +29,7 @@ EXPAT_CONFLICTS=
 #
 # EXPAT_IPK_VERSION should be incremented when the ipk changes.
 #
-EXPAT_IPK_VERSION=1
+EXPAT_IPK_VERSION=2
 
 #
 # EXPAT_CONFFILES should be a list of user-editable files

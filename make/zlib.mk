@@ -1,32 +1,36 @@
 #############################################################
 #
-# zlib
+# zlib - http://zlib.net/zlib-1.2.8.tar.gz
 #
 #############################################################
 
-ZLIB_SITE=http://$(SOURCEFORGE_MIRROR)/sourceforge/libpng
+ZLIB_SITE=http://sourceforge.net/projects/libpng/files/zlib/1.2.8
 ZLIB_SITE2=http://zlib.net
-ZLIB_VERSION:=1.2.5
-ZLIB_LIB_VERSION:=1.2.5
-ZLIB_SOURCE=zlib-$(ZLIB_VERSION).tar.bz2
+ZLIB_VERSION=1.2.8
+ZLIB_LIB_VERSION=1.2.8
+ZLIB_SOURCE=zlib-$(ZLIB_VERSION).tar.gz
 ZLIB_DIR=zlib-$(ZLIB_VERSION)
-ZLIB_UNZIP=bzcat
-ZLIB_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
+ZLIB_UNZIP=zcat
+ZLIB_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 ZLIB_DESCRIPTION=zlib is a library implementing the 'deflate' compression system.
 ZLIB_SECTION=libs
 ZLIB_PRIORITY=optional
 ZLIB_DEPENDS=
 ZLIB_CONFLICTS=
 
-ZLIB_IPK_VERSION=1
+ZLIB_IPK_VERSION=2
 
 ZLIB_CFLAGS= $(TARGET_CFLAGS) -fPIC
 ifeq ($(strip $(BUILD_WITH_LARGEFILE)),true)
 ZLIB_CFLAGS+= -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
 endif
+#ZLIB_CFLAGS= -O3  -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN
+
+ZLIB_STATICLIB=libz.a
+ZLIB_TEST_LDFLAGS=-L. libz.a
 
 ifneq (darwin,$(TARGET_OS))
-ZLIB_LDFLAGS=-Wl,-soname,libz.so.1
+ZLIB_LDFLAGS=-Wl,-soname,libz.so.1,--version-script,zlib.map
 ZLIB_MAKE_FLAGS=LDSHARED="$(TARGET_CC) -shared $(STAGING_LDFLAGS) $(ZLIB_LDFLAGS)"
 endif
 
@@ -78,8 +82,7 @@ endif
 	(cd $(ZLIB_BUILD_DIR); \
 		$(TARGET_CONFIGURE_OPTS) \
 		prefix=/opt \
-		./configure \
-		--shared \
+		./configure --shared \
 	)
 	touch $@
 
@@ -87,7 +90,7 @@ zlib-unpack: $(ZLIB_BUILD_DIR)/.configured
 
 $(ZLIB_BUILD_DIR)/.built: $(ZLIB_BUILD_DIR)/.configured
 	rm -f $@
-	$(MAKE) RANLIB="$(TARGET_RANLIB)" AR="$(TARGET_AR) rc" \
+	$(MAKE) RANLIB="$(TARGET_RANLIB)" AR="$(TARGET_AR)" \
 		SHAREDLIB="libz.$(SHLIB_EXT)" \
 		SHAREDLIBV="libz$(SO).$(ZLIB_LIB_VERSION)$(DYLIB)" \
 		SHAREDLIBM="libz$(SO).1$(DYLIB)" \

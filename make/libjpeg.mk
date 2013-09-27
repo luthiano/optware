@@ -20,11 +20,11 @@
 # You should change all these variables to suit your package.
 #
 LIBJPEG_SITE=http://www.ijg.org/files
-LIBJPEG_VERSION=6b
+LIBJPEG_VERSION=9
 LIBJPEG_SOURCE=jpegsrc.v$(LIBJPEG_VERSION).tar.gz
 LIBJPEG_DIR=jpeg-$(LIBJPEG_VERSION)
 LIBJPEG_UNZIP=zcat
-LIBJPEG_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
+LIBJPEG_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 LIBJPEG_DESCRIPTION=collection of jpeg tools
 LIBJPEG_SECTION=net
 LIBJPEG_PRIORITY=optional

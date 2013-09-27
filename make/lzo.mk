@@ -4,24 +4,9 @@
 #
 ###########################################################
 
-# You must replace "lzo" and "LZO" with the lower case name and
-# upper case name of your new package.  Some places below will say
-# "Do not change this" - that does not include this global change,
-# which must always be done to ensure we have unique names.
-
-#
-# LZO_VERSION, LZO_SITE and LZO_SOURCE define
-# the upstream location of the source code for the package.
-# LZO_DIR is the directory which is created when the source
-# archive is unpacked.
-# LZO_UNZIP is the command used to unzip the source.
-# It is usually "zcat" (for .gz) or "bzcat" (for .bz2)
-#
-# You should change all these variables to suit your package.
-#
 LZO_NAME=lzo
 LZO_SITE=http://www.oberhumer.com/opensource/lzo/download
-LZO_VERSION=2.03
+LZO_VERSION=2.06
 LZO_SOURCE=$(LZO_NAME)-$(LZO_VERSION).tar.gz
 LZO_DIR=$(LZO_NAME)-$(LZO_VERSION)
 LZO_UNZIP=zcat
@@ -34,7 +19,7 @@ LZO_IPK_VERSION=1
 #
 # Control file info
 #
-LZO_MAINTAINER=Inge Arnesen <inge.arnesen@gmail.com>
+LZO_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 LZO_DESCRIPTION=Compression library
 LZO_SECTION=lib
 LZO_PRIORITY=optional

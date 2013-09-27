@@ -1,33 +1,16 @@
 ###########################################################
 #
-# e2fsprogs
+# e2fsprogs - http://prdownloads.sourceforge.net/e2fsprogs/e2fsprogs-1.42.8.tar.gz
 #
 ###########################################################
 
-# You must replace "e2fsprogs" and "E2FSPROGS" with the lower case name and
-# upper case name of your new package.  Some places below will say
-# "Do not change this" - that does not include this global change,
-# which must always be done to ensure we have unique names.
-
-#
-# E2FSPROGS_VERSION, E2FSPROGS_SITE and E2FSPROGS_SOURCE define
-# the upstream location of the source code for the package.
-# E2FSPROGS_DIR is the directory which is created when the source
-# archive is unpacked.
-# E2FSPROGS_UNZIP is the command used to unzip the source.
-# It is usually "zcat" (for .gz) or "bzcat" (for .bz2)
-#
-# You should change all these variables to suit your package.
-#
 E2FSPROGS_SITE=http://$(SOURCEFORGE_MIRROR)/sourceforge/e2fsprogs
-
-E2FSPROGS_VERSION ?= 1.41.14
-E2FSPROGS_IPK_VERSION ?= 1
-
+E2FSPROGS_VERSION ?= 1.42.8
+E2FSPROGS_IPK_VERSION ?= 2
 E2FSPROGS_SOURCE=e2fsprogs-$(E2FSPROGS_VERSION).tar.gz
 E2FSPROGS_DIR=e2fsprogs-$(E2FSPROGS_VERSION)
 E2FSPROGS_UNZIP=zcat
-E2FSPROGS_MAINTAINER=Inge Arnesen <inge.arnesen@gmail.com>
+E2FSPROGS_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 E2FSPROGS_DESCRIPTION=Ext2 Filesystem
 E2FSPROGS_SECTION=utils
 E2FSPROGS_PRIORITY=optional
@@ -231,7 +214,7 @@ $(E2FSPROGS_IPK) $(E2FSLIBS_IPK) $(E2FSLIBS-DEV_IPK): $(E2FSPROGS_BUILD_DIR)/.bu
 	install -d $(E2FSPROGS_IPK_DIR)/opt/man/man8
 	install -d $(E2FSPROGS_IPK_DIR)/opt/man/man1
 	DESTDIR=$(E2FSPROGS_IPK_DIR) LDCONFIG=true \
-	$(MAKE) -C $(E2FSPROGS_BUILD_DIR) install-strip
+	$(MAKE) -C $(E2FSPROGS_BUILD_DIR) install
 	# Strip in the 3 executables - take both e2fsck versions for now
 	$(STRIP_COMMAND) $(E2FSPROGS_BUILD_DIR)/debugfs/debugfs -o $(E2FSPROGS_IPK_DIR)/opt/sbin/debugfs
 	-$(STRIP_COMMAND) $(E2FSPROGS_BUILD_DIR)/e2fsck/e2fsck.shared -o $(E2FSPROGS_IPK_DIR)/opt/sbin/e2fsck

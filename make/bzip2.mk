@@ -10,14 +10,14 @@ BZIP2_LIB_VERSION=$(BZIP2_VERSION)
 BZIP2_SOURCE=bzip2-$(BZIP2_VERSION).tar.gz
 BZIP2_DIR=bzip2-$(BZIP2_VERSION)
 BZIP2_UNZIP=zcat
-BZIP2_MAINTAINER=Christopher Blunck <christopher.blunck@gmail.com>
+BZIP2_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 BZIP2_DESCRIPTION=Very high-quality data compression program
 BZIP2_SECTION=compression
 BZIP2_PRIORITY=optional
 BZIP2_DEPENDS=
 BZIP2_CONFLICTS=
 
-BZIP2_IPK_VERSION=1
+BZIP2_IPK_VERSION=2
 
 BZIP2_BUILD_DIR=$(BUILD_DIR)/bzip2
 BZIP2_SOURCE_DIR=$(SOURCE_DIR)/bzip2

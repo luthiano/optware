@@ -1,31 +1,16 @@
 ###########################################################
 #
-# sqlite
+# sqlite - http://www.sqlite.org/2013/sqlite-autoconf-3080002.tar.gz
 #
 ###########################################################
-#
-# SQLITE_VERSION, SQLITE_SITE and SQLITE_SOURCE define
-# the upstream location of the source code for the package.
-# SQLITE_DIR is the directory which is created when the source
-# archive is unpacked.
-# SQLITE_UNZIP is the command used to unzip the source.
-# It is usually "zcat" (for .gz) or "bzcat" (for .bz2)
-#
-# You should change all these variables to suit your package.
-# Please make sure that you add a description, and that you
-# list all your packages' dependencies, seperated by commas.
-# 
-# If you list yourself as MAINTAINER, please give a valid email
-# address, and indicate your irc nick if it cannot be easily deduced
-# from your name or email address.  If you leave MAINTAINER set to
-# "NSLU2 Linux" other developers will feel free to edit.
+
 #
 SQLITE_SITE=http://www.sqlite.org
-SQLITE_VERSION=3.7.12.1
-SQLITE_DIR=sqlite-autoconf-3071201
+SQLITE_VERSION=3.8.0.2
+SQLITE_DIR=sqlite-autoconf-3080002
 SQLITE_SOURCE=$(SQLITE_DIR).tar.gz
 SQLITE_UNZIP=zcat
-SQLITE_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
+SQLITE_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 SQLITE_DESCRIPTION=SQLite is a small C library that implements a self-contained, embeddable, zero-configuration SQL database engine.
 SQLITE_SECTION=misc
 SQLITE_PRIORITY=optional
@@ -35,7 +20,7 @@ SQLITE_CONFLICTS=
 #
 # SQLITE_IPK_VERSION should be incremented when the ipk changes.
 #
-SQLITE_IPK_VERSION=1
+SQLITE_IPK_VERSION=2
 
 #
 # SQLITE_CONFFILES should be a list of user-editable files

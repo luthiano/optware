@@ -27,11 +27,11 @@
 # "NSLU2 Linux" other developers will feel free to edit.
 #
 LIBEXIF_SITE=http://$(SOURCEFORGE_MIRROR)/sourceforge/libexif
-LIBEXIF_VERSION=0.6.19
+LIBEXIF_VERSION=0.6.21
 LIBEXIF_SOURCE=libexif-$(LIBEXIF_VERSION).tar.bz2
 LIBEXIF_DIR=libexif-$(LIBEXIF_VERSION)
 LIBEXIF_UNZIP=bzcat
-LIBEXIF_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
+LIBEXIF_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 LIBEXIF_DESCRIPTION=Library to parse EXIF info in JPEG file and read/write the data from those tags.
 LIBEXIF_SECTION=lib
 LIBEXIF_PRIORITY=optional

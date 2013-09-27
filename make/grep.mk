@@ -4,15 +4,15 @@
 #
 ###########################################################
 
-GREP_VERSION=2.12
-GREP_IPK_VERSION=1
+GREP_VERSION=2.14
+GREP_IPK_VERSION=2
 GREP_DEPENDS=pcre
 
 GREP=grep-$(GREP_VERSION)
 GREP_SITE=http://ftp.gnu.org/pub/gnu/grep
 GREP_SOURCE=$(GREP).tar.xz
 GREP_UNZIP=$(HOST_STAGING_PREFIX)/bin/xzcat
-GREP_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
+GREP_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 GREP_DESCRIPTION=Global regular expression parser
 GREP_SECTION=util
 GREP_PRIORITY=optional

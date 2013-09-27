@@ -31,7 +31,7 @@
 <FOO>_SOURCE=<foo>-$(<FOO>_VERSION).tar.gz
 <FOO>_DIR=<foo>-$(<FOO>_VERSION)
 <FOO>_UNZIP=zcat
-<FOO>_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
+<FOO>_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 <FOO>_DESCRIPTION=Describe <foo> here.
 <FOO>_SECTION=
 <FOO>_PRIORITY=optional

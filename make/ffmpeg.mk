@@ -4,12 +4,6 @@
 #
 ###########################################################
 
-# You must replace "ffmpeg" and "FFMPEG" with the lower case name and
-# upper case name of your new package.  Some places below will say
-# "Do not change this" - that does not include this global change,
-# which must always be done to ensure we have unique names.
-
-#
 # FFMPEG_VERSION, FFMPEG_SITE and FFMPEG_SOURCE define
 # the upstream location of the source code for the package.
 # FFMPEG_DIR is the directory which is created when the source
@@ -17,28 +11,26 @@
 # FFMPEG_UNZIP is the command used to unzip the source.
 # It is usually "zcat" (for .gz) or "bzcat" (for .bz2)
 #
-# You should change all these variables to suit your package.
-#
-# Check http://svn.mplayerhq.hu/ffmpeg/trunk/
 # Take care when upgrading for multiple targets
-FFMPEG_SVN=svn://svn.mplayerhq.hu/ffmpeg/trunk
-FFMPEG_SVN_DATE=20080409
-FFMPEG_VERSION=0.svn$(FFMPEG_SVN_DATE)
+#FFMPEG_SVN=svn://svn.mplayerhq.hu/ffmpeg/trunk
+#FFMPEG_SVN_DATE=20080409
+FFMPEG_VERSION=2.0.1
 FFMPEG_DIR=ffmpeg-$(FFMPEG_VERSION)
 FFMPEG_SOURCE=$(FFMPEG_DIR).tar.bz2
+FFMPEG_SITE=http://www.ffmpeg.org/releases/
 FFMPEG_UNZIP=bzcat
-FFMPEG_MAINTAINER=Keith Garry Boyce <nslu2-linux@yahoogroups.com>
+FFMPEG_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 FFMPEG_DESCRIPTION=FFmpeg is an audio/video conversion tool.
 FFMPEG_SECTION=tool
 FFMPEG_PRIORITY=optional
-FFMPEG_DEPENDS=
+FFMPEG_DEPENDS=libav
 FFMPEG_SUGGESTS=
 FFMPEG_CONFLICTS=
 
 #
 # FFMPEG_IPK_VERSION should be incremented when the ipk changes.
 #
-FFMPEG_IPK_VERSION=3
+FFMPEG_IPK_VERSION=4
 
 #
 # FFMPEG_CONFFILES should be a list of user-editable files
@@ -84,16 +76,8 @@ FFMPEG_IPK=$(BUILD_DIR)/ffmpeg_$(FFMPEG_VERSION)-$(FFMPEG_IPK_VERSION)_$(TARGET_
 # This is the dependency on the source code.  If the source is missing,
 # then it will be fetched from the site using wget.
 #
-#$(DL_DIR)/$(FFMPEG_SOURCE):
-#	$(WGET) -P $(DL_DIR) $(FFMPEG_SITE)/$(FFMPEG_SOURCE)
-
 $(DL_DIR)/$(FFMPEG_SOURCE):
-	( cd $(BUILD_DIR) ; \
-		rm -rf $(FFMPEG_DIR) && \
-		svn co -r '{$(FFMPEG_SVN_DATE)}' $(FFMPEG_SVN) $(FFMPEG_DIR) && \
-		tar -cjf $@ $(FFMPEG_DIR) --exclude .svn && \
-		rm -rf $(FFMPEG_DIR) \
-	)
+	$(WGET) -P $(@D) $(FFMPEG_SITE)/$(@F)
 
 
 #
@@ -144,6 +128,7 @@ $(FFMPEG_BUILD_DIR)/.configured: $(DL_DIR)/$(FFMPEG_SOURCE) $(FFMPEG_PATCHES) ma
 		--enable-cross-compile \
 		--cross-prefix=$(TARGET_CROSS) \
 		--arch=$(FFMPEG_ARCH) \
+		--target-os=linux \
 		$(FFMPEG_CONFIG_OPTS) \
 		--disable-encoder=snow \
 		--disable-decoder=snow \
@@ -241,10 +226,11 @@ $(FFMPEG_IPK_DIR)/CONTROL/control:
 #
 $(FFMPEG_IPK): $(FFMPEG_BUILD_DIR)/.built
 	rm -rf $(FFMPEG_IPK_DIR) $(BUILD_DIR)/ffmpeg_*_$(TARGET_ARCH).ipk
-	$(MAKE) -C $(FFMPEG_BUILD_DIR) mandir=$(FFMPEG_IPK_DIR)/opt/man \
-		bindir=$(FFMPEG_IPK_DIR)/opt/bin libdir=$(FFMPEG_IPK_DIR)/opt/lib \
-		prefix=$(FFMPEG_IPK_DIR)/opt DESTDIR=$(FFMPEG_IPK_DIR) \
-		LDCONFIG='$$(warning ldconfig disabled when building package)' install
+	#$(MAKE) -C $(FFMPEG_BUILD_DIR) mandir=$(FFMPEG_IPK_DIR)/opt/man \
+	#	bindir=$(FFMPEG_IPK_DIR)/opt/bin libdir=$(FFMPEG_IPK_DIR)/opt/lib \
+	#	prefix=$(FFMPEG_IPK_DIR)/opt DESTDIR=$(FFMPEG_IPK_DIR) \
+	#	LDCONFIG='$$(warning ldconfig disabled when building package)' install
+	$(MAKE) -C $(FFMPEG_BUILD_DIR) DESTDIR=$(FFMPEG_IPK_DIR) install
 	$(TARGET_STRIP) $(FFMPEG_IPK_DIR)/opt/bin/ffmpeg
 	$(TARGET_STRIP) $(FFMPEG_IPK_DIR)/opt/bin/ffserver
 	$(TARGET_STRIP) $(FFMPEG_IPK_DIR)/opt/lib/*.so

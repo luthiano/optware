@@ -20,11 +20,11 @@
 # You should change all these variables to suit your package.
 #
 LIBVORBIS_SITE=http://downloads.xiph.org/releases/vorbis
-LIBVORBIS_VERSION=1.3.2
+LIBVORBIS_VERSION=1.3.3
 LIBVORBIS_SOURCE=libvorbis-$(LIBVORBIS_VERSION).tar.gz
 LIBVORBIS_DIR=libvorbis-$(LIBVORBIS_VERSION)
 LIBVORBIS_UNZIP=zcat
-LIBVORBIS_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
+LIBVORBIS_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 LIBVORBIS_DESCRIPTION=Ogg Vorbis compressed audio format.
 LIBVORBIS_SECTION=lib
 LIBVORBIS_PRIORITY=optional
@@ -35,7 +35,7 @@ LIBVORBIS_CONFLICTS=
 #
 # LIBVORBIS_IPK_VERSION should be incremented when the ipk changes.
 #
-LIBVORBIS_IPK_VERSION=1
+LIBVORBIS_IPK_VERSION=2
 
 #
 # LIBVORBIS_CONFFILES should be a list of user-editable files

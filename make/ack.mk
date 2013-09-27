@@ -5,11 +5,11 @@
 ###########################################################
 
 ACK_SITE=http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE
-ACK_VERSION=1.94
+ACK_VERSION=2.10
 ACK_SOURCE=ack-$(ACK_VERSION).tar.gz
 ACK_DIR=ack-$(ACK_VERSION)
 ACK_UNZIP=zcat
-ACK_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
+ACK_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 ACK_DESCRIPTION=grep-like text finder
 ACK_SECTION=util
 ACK_PRIORITY=optional

@@ -25,7 +25,7 @@ P7ZIP_VERSION=9.20.1
 P7ZIP_SOURCE=p7zip_$(P7ZIP_VERSION)_src_all.tar.bz2
 P7ZIP_DIR=p7zip_$(P7ZIP_VERSION)
 P7ZIP_UNZIP=bzcat
-P7ZIP_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
+P7ZIP_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 P7ZIP_DESCRIPTION=Command line version of 7-zip for POSIX systems.
 P7ZIP_SECTION=compression
 P7ZIP_PRIORITY=optional
@@ -36,7 +36,7 @@ P7ZIP_CONFLICTS=
 #
 # P7ZIP_IPK_VERSION should be incremented when the ipk changes.
 #
-P7ZIP_IPK_VERSION=1
+P7ZIP_IPK_VERSION=2
 
 #
 # P7ZIP_CONFFILES should be a list of user-editable files

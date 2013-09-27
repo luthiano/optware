@@ -4,23 +4,6 @@
 #
 ###########################################################
 
-#
-# BVI_VERSION, BVI_SITE and BVI_SOURCE define
-# the upstream location of the source code for the package.
-# BVI_DIR is the directory which is created when the source
-# archive is unpacked.
-# BVI_UNZIP is the command used to unzip the source.
-# It is usually "zcat" (for .gz) or "bzcat" (for .bz2)
-#
-# You should change all these variables to suit your package.
-# Please make sure that you add a description, and that you
-# list all your packages' dependencies, seperated by commas.
-# 
-# If you list yourself as MAINTAINER, please give a valid email
-# address, and indicate your irc nick if it cannot be easily deduced
-# from your name or email address.  If you leave MAINTAINER set to
-# "NSLU2 Linux" other developers will feel free to edit.
-#
 BVI_VERSION=1.3.2
 BVI_SITE=http://sourceforge.net/projects/bvi/files/bvi/$(BVI_VERSION)/
 BVI_SOURCE=bvi-$(BVI_VERSION).src.tar.gz
@@ -33,10 +16,6 @@ BVI_PRIORITY=optional
 BVI_DEPENDS=ncurses
 BVI_SUGGESTS=
 BVI_CONFLICTS=
-
-#
-# BVI_IPK_VERSION should be incremented when the ipk changes.
-#
 BVI_IPK_VERSION=1
 
 #
@@ -190,10 +169,7 @@ $(BVI_IPK_DIR)/CONTROL/control:
 #
 $(BVI_IPK): $(BVI_BUILD_DIR)/.built
 	rm -rf $(BVI_IPK_DIR) $(BUILD_DIR)/bvi_*_$(TARGET_ARCH).ipk
-#	$(MAKE) -C $(BVI_BUILD_DIR) DESTDIR=$(BVI_IPK_DIR) install-strip
-	install -d $(BVI_IPK_DIR)/opt/bin
-	install -m 755 $(BVI_BUILD_DIR)/src/ne $(BVI_IPK_DIR)/opt/bin/
-	$(STRIP_COMMAND) $(BVI_IPK_DIR)/opt/bin/ne
+	$(MAKE) -C $(BVI_BUILD_DIR) DESTDIR=$(BVI_IPK_DIR) 
 #	install -d $(BVI_IPK_DIR)/opt/etc/
 #	install -m 644 $(BVI_SOURCE_DIR)/bvi.conf $(BVI_IPK_DIR)/opt/etc/bvi.conf
 #	install -d $(BVI_IPK_DIR)/opt/etc/init.d

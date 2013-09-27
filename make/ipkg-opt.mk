@@ -9,10 +9,14 @@
 # for the package.  IPKG-OPT_DIR is the directory which is created when
 # this cvs module is checked out.
 #
-IPKG-OPT_REPOSITORY=:pserver:anoncvs@anoncvs.handhelds.org
-IPKG-OPT_DIR=ipkg-opt
-IPKG-OPT_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
-IPKG-OPT_DESCRIPTION=The Itsy Package Manager
+#IPKG-OPT_REPOSITORY=:pserver:anoncvs@anoncvs.handhelds.org
+IPKG-OPT_SITE=http://downloads.openwrt.org/sources/
+IPKG-OPT_VERSION=0.99.163
+IPKG-OPT_SOURCE=ipkg-$(IPKG-OPT_VERSION).tar.gz
+IPKG-OPT_DIR=ipkg-$(IPKG-OPT_VERSION)
+LIBAV_UNZIP=zcat
+IPKG-OPT_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
+IPKG-OPT_DESCRIPTION=The Itsy Package Manager (dead!)
 IPKG-OPT_SECTION=base
 IPKG-OPT_PRIORITY=optional
 ifeq ($(OPTWARE_TARGET), $(filter oleg ddwrt, $(OPTWARE_TARGET)))
@@ -27,14 +31,14 @@ IPKG-OPT_CONFLICTS=
 # Software downloaded from CVS repositories must either use a tag or a
 # date to ensure that the same sources can be downloaded later.
 #
-IPKG-OPT_CVS_TAG=v0-99-163
-IPKG-OPT_VERSION=0.99.163
-IPKG-OPT_CVS_OPTS=-r $(IPKG-OPT_CVS_TAG)
+#IPKG-OPT_CVS_TAG=v0-99-163
+#IPKG-OPT_VERSION=0.99.163
+#IPKG-OPT_CVS_OPTS=-r $(IPKG-OPT_CVS_TAG)
 
 #
 # IPKG-OPT_IPK_VERSION should be incremented when the ipk changes.
 #
-IPKG-OPT_IPK_VERSION=10
+IPKG-OPT_IPK_VERSION=11
 
 #
 # IPKG-OPT_CONFFILES should be a list of user-editable files
@@ -60,7 +64,7 @@ IPKG-OPT_BUILD_DIR=$(BUILD_DIR)/ipkg-opt
 IPKG-OPT_SOURCE_DIR=$(SOURCE_DIR)/ipkg-opt
 IPKG-OPT_IPK_DIR=$(BUILD_DIR)/ipkg-opt-$(IPKG-OPT_VERSION)-ipk
 IPKG-OPT_IPK=$(BUILD_DIR)/ipkg-opt_$(IPKG-OPT_VERSION)-$(IPKG-OPT_IPK_VERSION)_$(TARGET_ARCH).ipk
-IPKG-OPT_FEEDS=http://ipkg.nslu2-linux.org/feeds/optware
+IPKG-OPT_FEEDS=http://files.luthiano.com/feeds/optware
 
 .PHONY: ipkg-opt-source ipkg-opt-unpack ipkg-opt ipkg-opt-stage ipkg-opt-ipk ipkg-opt-clean ipkg-opt-dirclean ipkg-opt-check
 
@@ -90,19 +94,11 @@ endif
 # In this case there is no tarball, instead we fetch the sources
 # directly to the builddir with CVS
 #
-$(DL_DIR)/ipkg-opt-$(IPKG-OPT_VERSION).tar.gz:
-	( cd $(BUILD_DIR) ; \
-		rm -rf $(IPKG-OPT_DIR) && \
-		echo  "/1 $(IPKG-OPT_REPOSITORY):2401/cvs Ay=0=h<Z" \
-			> ipkg.cvspass && \
-		CVS_PASSFILE=ipkg.cvspass \
-		cvs -d $(IPKG-OPT_REPOSITORY):/cvs -z3 co $(IPKG-OPT_CVS_OPTS) \
-			-d $(IPKG-OPT_DIR) familiar/dist/ipkg/C && \
-		tar -czf $@ $(IPKG-OPT_DIR) && \
-		rm -rf $(IPKG-OPT_DIR) \
-	)
+$(DL_DIR)/$(IPKG-OPT_SOURCE):
+	$(WGET) -P $(@D) $(IPKG-OPT_SITE)/$(@F) || \
+	$(WGET) -P $(@D) $(SOURCES_NLO_SITE)/$(@F)
 
-ipkg-opt-source: $(DL_DIR)/ipkg-opt-$(IPKG-OPT_VERSION).tar.gz
+ipkg-opt-source: $(DL_DIR)/$(IPKG-OPT_SOURCE)
 
 #
 # This target also configures the build within the build directory.
@@ -114,9 +110,9 @@ ipkg-opt-source: $(DL_DIR)/ipkg-opt-$(IPKG-OPT_VERSION).tar.gz
 # If the compilation of the package requires other packages to be staged
 # first, then do that first (e.g. "$(MAKE) ipkg-opt-stage <baz>-stage").
 #
-$(IPKG-OPT_BUILD_DIR)/.configured: $(DL_DIR)/ipkg-opt-$(IPKG-OPT_VERSION).tar.gz
+$(IPKG-OPT_BUILD_DIR)/.configured: $(DL_DIR)/$(IPKG-OPT_SOURCE)
 	rm -rf $(BUILD_DIR)/$(IPKG-OPT_DIR) $(@D)
-	tar -C $(BUILD_DIR) -xzf $(DL_DIR)/ipkg-opt-$(IPKG-OPT_VERSION).tar.gz
+	tar -C $(BUILD_DIR) -xzf $(DL_DIR)/$(IPKG-OPT_SOURCE)
 	if test -n "$(IPKG-OPT_PATCHES)" ; \
 		then cat $(IPKG-OPT_PATCHES) | \
 		patch -d $(BUILD_DIR)/$(IPKG-OPT_DIR) -p1 ; \

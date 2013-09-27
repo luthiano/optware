@@ -4,19 +4,19 @@
 #
 ###########################################################
 
-NANO_SITE=http://www.nano-editor.org/dist/v2.2
-NANO_VERSION=2.2.6
+NANO_SITE=http://www.nano-editor.org/dist/v2.3
+NANO_VERSION=2.3.2
 NANO_SOURCE=nano-$(NANO_VERSION).tar.gz
 NANO_DIR=nano-$(NANO_VERSION)
 NANO_UNZIP=zcat
-NANO_MAINTAINER=Mark Donszelmann <mark@donszelmann.com>
+NANO_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 NANO_DESCRIPTION=A pico like editor
 NANO_SECTION=editor
 NANO_PRIORITY=optional
 NANO_DEPENDS=ncurses
 NANO_CONFLICTS=
 
-NANO_IPK_VERSION=1
+NANO_IPK_VERSION=2
 
 #NANO_CONFFILES=/opt/etc/nanorc
 

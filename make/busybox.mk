@@ -4,28 +4,13 @@
 #
 ###########################################################
 
-# You must replace "busybox" and "BUSYBOX" with the lower case name and
-# upper case name of your new package.  Some places below will say
-# "Do not change this" - that does not include this global change,
-# which must always be done to ensure we have unique names.
-
-#
-# BUSYBOX_VERSION, BUSYBOX_SITE and BUSYBOX_SOURCE define
-# the upstream location of the source code for the package.
-# BUSYBOX_DIR is the directory which is created when the source
-# archive is unpacked.
-# BUSYBOX_UNZIP is the command used to unzip the source.
-# It is usually "zcat" (for .gz) or "bzcat" (for .bz2)
-#
-# You should change all these variables to suit your package.
-#
 BUSYBOX_SITE=http://www.busybox.net/downloads
 # If you change this version, you must check the adduser package as well.
-BUSYBOX_VERSION=1.10.3
+BUSYBOX_VERSION=1.21.1
 BUSYBOX_SOURCE=busybox-$(BUSYBOX_VERSION).tar.bz2
 BUSYBOX_DIR=busybox-$(BUSYBOX_VERSION)
 BUSYBOX_UNZIP=bzcat
-BUSYBOX_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
+BUSYBOX_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 BUSYBOX_DESCRIPTION=A userland replacement for embedded systems.
 BUSYBOX_SECTION=core
 BUSYBOX_PRIORITY=optional

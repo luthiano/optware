@@ -4,29 +4,12 @@
 #
 ###########################################################
 
-#
-# ABOOK_VERSION, ABOOK_SITE and ABOOK_SOURCE define
-# the upstream location of the source code for the package.
-# ABOOK_DIR is the directory which is created when the source
-# archive is unpacked.
-# ABOOK_UNZIP is the command used to unzip the source.
-# It is usually "zcat" (for .gz) or "bzcat" (for .bz2)
-#
-# You should change all these variables to suit your package.
-# Please make sure that you add a description, and that you
-# list all your packages' dependencies, seperated by commas.
-# 
-# If you list yourself as MAINTAINER, please give a valid email
-# address, and indicate your irc nick if it cannot be easily deduced
-# from your name or email address.  If you leave MAINTAINER set to
-# "NSLU2 Linux" other developers will feel free to edit.
-#
 ABOOK_SITE=http://$(SOURCEFORGE_MIRROR)/sourceforge/abook
 ABOOK_VERSION=0.5.6
 ABOOK_SOURCE=abook-$(ABOOK_VERSION).tar.gz
 ABOOK_DIR=abook-$(ABOOK_VERSION)
 ABOOK_UNZIP=zcat
-ABOOK_MAINTAINER=Brian Zhou <bzhou@users.sf.net>
+ABOOK_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 ABOOK_DESCRIPTION=Abook is a text-based addressbook program designed to use with mutt mail client.
 ABOOK_SECTION=misc
 ABOOK_PRIORITY=optional

@@ -26,7 +26,7 @@ RCS_VERSION=5.7
 RCS_SOURCE=rcs-$(RCS_VERSION).tar.Z
 RCS_DIR=rcs-$(RCS_VERSION)
 RCS_UNZIP=zcat
-RCS_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
+RCS_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 RCS_DESCRIPTION=The Revision Control System (RCS) manages multiple revisions of files.
 RCS_SECTION=misc
 RCS_PRIORITY=optional
@@ -37,7 +37,7 @@ RCS_CONFLICTS=
 #
 # RCS_IPK_VERSION should be incremented when the ipk changes.
 #
-RCS_IPK_VERSION=2
+RCS_IPK_VERSION=3
 
 #
 # RCS_CONFFILES should be a list of user-editable files

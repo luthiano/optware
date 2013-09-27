@@ -21,14 +21,14 @@
 # "NSLU2 Linux" other developers will feel free to edit.
 #
 9BASE_SITE=http://dl.suckless.org/tools
-9BASE_UPSTREAM_VERSION=4
-9BASE_VERSION=4+20090827
+9BASE_VERSION=5
+9BASE_UPSTREAM_VERSION=$(9BASE_VERSION)
 9BASE_UPSTREAM_SOURCE=9base-$(9BASE_UPSTREAM_VERSION).tar.gz
 9BASE_SOURCE=9base-$(9BASE_VERSION).tar.gz
 9BASE_SOURCE_MD5=af10410542ea6b6875a71e06fdc12c66
 9BASE_DIR=9base-$(9BASE_UPSTREAM_VERSION)
 9BASE_UNZIP=zcat
-9BASE_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
+9BASE_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 9BASE_DESCRIPTION=9base is a port of a few original Plan 9 userland tools to Unix.
 9BASE_SECTION=utils
 9BASE_PRIORITY=optional
@@ -36,7 +36,7 @@
 9BASE_SUGGESTS=
 9BASE_CONFLICTS=
 
-9BASE_IPK_VERSION=1
+9BASE_IPK_VERSION=2
 
 #9BASE_CONFFILES=/opt/etc/9base.conf /opt/etc/init.d/SXX9base
 
@@ -59,9 +59,8 @@ endif
 $(DL_DIR)/$(9BASE_SOURCE):
 	rm -f $@ $(@D)/$(9BASE_UPSTREAM_SOURCE)
 	$(WGET) -P $(@D) $(9BASE_SITE)/$(9BASE_UPSTREAM_SOURCE) && \
-	test `md5sum $(@D)/$(9BASE_UPSTREAM_SOURCE) | cut -f1 -d" "` = $(9BASE_SOURCE_MD5) && \
-	mv $(@D)/$(9BASE_UPSTREAM_SOURCE) $@ || \
-	$(WGET) -P $(@D) $(SOURCES_NLO_SITE)/$(@F)
+	#test `md5sum $(@D)/$(9BASE_UPSTREAM_SOURCE) | cut -f1 -d" "` = $(9BASE_SOURCE_MD5) && \
+	#mv $(@D)/$(9BASE_UPSTREAM_SOURCE) $@ || $(WGET) -P $(@D) $(SOURCES_NLO_SITE)/$(@F)
 
 9base-source: $(DL_DIR)/$(9BASE_SOURCE) $(9BASE_PATCHES)
 

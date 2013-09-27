@@ -27,11 +27,11 @@
 # "NSLU2 Linux" other developers will feel free to edit.
 #
 READLINE_SITE=http://ftp.gnu.org/pub/gnu/readline
-READLINE_VERSION=6.1
+READLINE_VERSION=6.2
 READLINE_SOURCE=readline-$(READLINE_VERSION).tar.gz
 READLINE_DIR=readline-$(READLINE_VERSION)
 READLINE_UNZIP=zcat
-READLINE_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
+READLINE_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 READLINE_DESCRIPTION=The GNU Readline library provides a set of functions for use by applications that allow users to edit command lines as they are typed in
 READLINE_SECTION=misc
 READLINE_PRIORITY=optional
@@ -40,7 +40,7 @@ READLINE_DEPENDS= ncurses
 #
 # READLINE_IPK_VERSION should be incremented when the ipk changes.
 #
-READLINE_IPK_VERSION=2
+READLINE_IPK_VERSION=3
 
 #
 # READLINE_CONFFILES should be a list of user-editable files

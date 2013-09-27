@@ -21,12 +21,12 @@
 # "NSLU2 Linux" other developers will feel free to edit.
 #
 NE_SITE=http://ne.dsi.unimi.it
-NE_VERSION?=2.4
-NE_IPK_VERSION?=1
+NE_VERSION?=2.5
+NE_IPK_VERSION?=2
 NE_SOURCE=ne-$(NE_VERSION).tar.gz
 NE_DIR=ne-$(NE_VERSION)
 NE_UNZIP=zcat
-NE_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
+NE_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 NE_DESCRIPTION=The nice editor.
 NE_SECTION=editor
 NE_PRIORITY=optional

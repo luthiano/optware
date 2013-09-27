@@ -4,11 +4,11 @@
 #
 ###########################################################
 XZ_UTILS_SITE=http://tukaani.org/xz
-XZ_UTILS_VERSION=5.0.3
+XZ_UTILS_VERSION=5.0.5
 XZ_UTILS_SOURCE=xz-$(XZ_UTILS_VERSION).tar.bz2
 XZ_UTILS_DIR=xz-$(XZ_UTILS_VERSION)
 XZ_UTILS_UNZIP=bzcat
-XZ_UTILS_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
+XZ_UTILS_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 XZ_UTILS_DESCRIPTION=A free general-purpose data compression software with high compression ratio
 XZ_UTILS_SECTION=utils
 XZ_UTILS_PRIORITY=optional

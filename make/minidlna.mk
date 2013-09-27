@@ -4,52 +4,23 @@
 #
 ###########################################################
 
-#
-# MINIDLNA_REPOSITORY defines the upstream location of the source code
-# for the package.  MINIDLNA_DIR is the directory which is created when
-# this cvs module is checked out.
-#
+MINIDLNA_VERSION=1.1.0
+MINIDLNA_SITE=http://sourceforge.net/projects/minidlna/files/minidlna/$(MINIDLNA_VERSION)/
+MINIDLNA_SOURCE=minidlna-$(MINIDLNA_VERSION).tar.gz
+MINIDLNA_DIR=minidlna-$(MINIDLNA_VERSION)
+MINIDLNA_UNZIP=zcat
 
-MINIDLNA_REPOSITORY=:pserver:anonymous@minidlna.cvs.sourceforge.net:/cvsroot/minidlna
-MINIDLNA_DIR=minidlna
-MINIDLNA_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
-MINIDLNA_DESCRIPTION=The MiniDLNA daemon is an UPnP-A/V and DLNA service which serves multimedia content to compatible clients on the network.
+MINIDLNA_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
+MINIDLNA_DESCRIPTION=The MiniDLNA/ReadyMedia daemon is an UPnP-A/V and DLNA service which serves multimedia content to compatible clients on the network.
 MINIDLNA_SECTION=media
 MINIDLNA_PRIORITY=optional
-MINIDLNA_DEPENDS=libexif, libid3tag, libjpeg, libvorbis, e2fslibs, ffmpeg, flac, sqlite
+MINIDLNA_DEPENDS=libexif, libid3tag, libjpeg, libvorbis, e2fslibs, ffmpeg, libav, flac, sqlite
 ifneq (, $(filter libiconv, $(PACKAGES)))
 MINIDLNA_DEPENDS +=, libiconv
 endif
 MINIDLNA_SUGGESTS=
 MINIDLNA_CONFLICTS=
-
-#
-# Software downloaded from CVS repositories must either use a tag or a
-# date to ensure that the same sources can be downloaded later.
-#
-
-#
-# If you want to use a date, uncomment the variables below and modify
-# MINIDLNA_CVS_DATE
-#
-
-MINIDLNA_CVS_DATE=20090413
-MINIDLNA_VERSION=cvs$(MINIDLNA_CVS_DATE)
-#MINIDLNA_CVS_OPTS=-D $(MINIDLNA_CVS_DATE)
-
-#
-# If you want to use a tag, uncomment the variables below and modify
-# MINIDLNA_CVS_TAG and MINIDLNA_CVS_VERSION
-#
-
-#MINIDLNA_CVS_TAG=version_1_2_3
-#MINIDLNA_VERSION=1.2.3
-#MINIDLNA_CVS_OPTS=-r $(MINIDLNA_CVS_TAG)
-
-#
-# MINIDLNA_IPK_VERSION should be incremented when the ipk changes.
-#
-MINIDLNA_IPK_VERSION=2
+MINIDLNA_IPK_VERSION=3
 
 #
 # MINIDLNA_CONFFILES should be a list of user-editable files
@@ -59,7 +30,7 @@ MINIDLNA_IPK_VERSION=2
 # MINIDLNA_PATCHES should list any patches, in the the order in
 # which they should be applied to the source code.
 #
-MINIDLNA_PATCHES=$(MINIDLNA_SOURCE_DIR)/inotify-syscalls-mips.patch
+#MINIDLNA_PATCHES=$(MINIDLNA_SOURCE_DIR)/inotify-syscalls-mips.patch
 
 #
 # If the compilation of the package requires additional
@@ -87,19 +58,10 @@ MINIDLNA_IPK=$(BUILD_DIR)/minidlna_$(MINIDLNA_VERSION)-$(MINIDLNA_IPK_VERSION)_$
 
 .PHONY: minidlna-source minidlna-unpack minidlna minidlna-stage minidlna-ipk minidlna-clean minidlna-dirclean minidlna-check
 
-#
-# In this case there is no tarball, instead we fetch the sources
-# directly to the builddir with CVS
-#
-$(DL_DIR)/minidlna-$(MINIDLNA_VERSION).tar.gz:
-	( cd $(BUILD_DIR) ; \
-		rm -rf $(MINIDLNA_DIR) && \
-		cvs -d $(MINIDLNA_REPOSITORY) -z3 co $(MINIDLNA_CVS_OPTS) $(MINIDLNA_DIR) && \
-		tar -czf $@ $(MINIDLNA_DIR) --exclude CVS && \
-		rm -rf $(MINIDLNA_DIR) \
-	)
+$(DL_DIR)/$(MINIDLNA_SOURCE):
+	$(WGET) -P $(@D) $(MINIDLNA_SITE)/$(@F)
 
-minidlna-source: $(DL_DIR)/minidlna-$(MINIDLNA_VERSION).tar.gz
+minidlna-source: $(DL_DIR)/$(MINIDLNA_SOURCE) $(MINIDLNA_PATCHES)
 
 #
 # This target also configures the build within the build directory.
@@ -111,12 +73,12 @@ minidlna-source: $(DL_DIR)/minidlna-$(MINIDLNA_VERSION).tar.gz
 # If the compilation of the package requires other packages to be staged
 # first, then do that first (e.g. "$(MAKE) <foo>-stage <baz>-stage").
 #
-$(MINIDLNA_BUILD_DIR)/.configured: $(DL_DIR)/minidlna-$(MINIDLNA_VERSION).tar.gz make/minidlna.mk
+$(MINIDLNA_BUILD_DIR)/.configured: $(DL_DIR)/$(MINIDLNA_SOURCE) $(MINIDLNA_PATCHES) make/minidlna.mk
 ifneq (, $(filter libiconv, $(PACKAGES)))
 	$(MAKE) libiconv-stage
 endif
 	$(MAKE) libexif-stage libid3tag-stage libjpeg-stage libvorbis-stage
-	$(MAKE) e2fsprogs-stage ffmpeg-stage flac-stage sqlite-stage
+	$(MAKE) e2fsprogs-stage ffmpeg-stage libav-stage flac-stage sqlite-stage
 	rm -rf $(BUILD_DIR)/$(MINIDLNA_DIR) $(MINIDLNA_BUILD_DIR)
 	tar -C $(BUILD_DIR) -xzf $(DL_DIR)/minidlna-$(MINIDLNA_VERSION).tar.gz
 	if test -n "$(MINIDLNA_PATCHES)" ; \

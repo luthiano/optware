@@ -5,11 +5,11 @@
 ###########################################################
 
 PERL-FILE-NEXT_SITE=http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE
-PERL-FILE-NEXT_VERSION=1.02
+PERL-FILE-NEXT_VERSION=1.12
 PERL-FILE-NEXT_SOURCE=File-Next-$(PERL-FILE-NEXT_VERSION).tar.gz
 PERL-FILE-NEXT_DIR=File-Next-$(PERL-FILE-NEXT_VERSION)
 PERL-FILE-NEXT_UNZIP=zcat
-PERL-FILE-NEXT_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
+PERL-FILE-NEXT_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 PERL-FILE-NEXT_DESCRIPTION=File::Next is a lightweight, taint-safe file-finding module. It is lightweight and has no non-core prerequisites.
 PERL-FILE-NEXT_SECTION=util
 PERL-FILE-NEXT_PRIORITY=optional

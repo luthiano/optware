@@ -20,11 +20,11 @@
 # You should change all these variables to suit your package.
 #
 LIBOGG_SITE=http://downloads.xiph.org/releases/ogg
-LIBOGG_VERSION=1.2.1
+LIBOGG_VERSION=1.3.1
 LIBOGG_SOURCE=libogg-$(LIBOGG_VERSION).tar.gz
 LIBOGG_DIR=libogg-$(LIBOGG_VERSION)
 LIBOGG_UNZIP=zcat
-LIBOGG_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
+LIBOGG_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 LIBOGG_DESCRIPTION=Ogg is a multimedia container format.
 LIBOGG_SECTION=lib
 LIBOGG_PRIORITY=optional

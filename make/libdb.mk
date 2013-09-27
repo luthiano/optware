@@ -1,48 +1,17 @@
 ###########################################################
 #
-# libdb
+# libdb http://download.oracle.com/otn/berkeley-db/db-6.0.20.tar.gz
 #
 ###########################################################
 
-# Copyright (C) 2004 by Tom King <ka6sox@gmail.com>
-# Copyright (C) 2004 by Rod Whitby
 #
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-# General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
-#
-# You must replace "<foo>" and "<FOO>" with the lower case name and
-# upper case name of your new package.  Some places below will say
-# "Do not change this" - that does not include this global change,
-# which must always be done to ensure we have unique names.
-
-#
-# <FOO>_VERSION, <FOO>_SITE and <FOO>_SOURCE define
-# the upstream location of the source code for the package.
-# <FOO>_DIR is the directory which is created when the source
-# archive is unpacked.
-# <FOO>_UNZIP is the command used to unzip the source.
-# It is usually "zcat" (for .gz) or "bzcat" (for .bz2)
-#
-# You should change all these variables to suit your package.
-#
-LIBDB_SITE=http://download.oracle.com/berkeley-db
-LIBDB_VERSION=4.2.52
-LIBDB_LIB_VERSION=4.2
+LIBDB_SITE=http://download.oracle.com/otn/berkeley-db
+LIBDB_VERSION=6.0.20
+LIBDB_LIB_VERSION=6.0
 LIBDB_SOURCE=db-$(LIBDB_VERSION).tar.gz
 LIBDB_DIR=db-$(LIBDB_VERSION)
 LIBDB_UNZIP=zcat
-LIBDB_MAINTAINER=ka6sox <ka6sox@gmail.com>
+LIBDB_MAINTAINER=Luthiano Vasconcelos <optware@luthiano.com>
 LIBDB_DESCRIPTION=Berkeley DB Libraries
 LIBDB_SECTION=lib
 LIBDB_PRIORITY=optional
